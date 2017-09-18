@@ -1,0 +1,2 @@
+opengl-backend=wayland
+hwdec=vaapi

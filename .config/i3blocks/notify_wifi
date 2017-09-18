@@ -1,0 +1,30 @@
+#!/bin/bash
+
+space=" "
+percent="%"
+connector="-"
+wifi_symbol="\uf1eb"
+ssid=$(iw dev wlp4s0 link | grep SSID | cut -d " " -f 2-)
+quality=$(/home/haden/.config/i3blocks/wifi_quality)
+signal="\uf012"
+if [ $quality -gt 70 ]
+then
+  color=green
+elif [ $quality -gt 40 ]
+then
+  color=orange
+else
+  color=red
+fi
+if [ $(cat /home/haden/.config/i3blocks/rfkill-state) == "1" ]; then
+	color=red
+	ssid=blocked
+	wifi_symbol="\uf00d"
+	quality=""
+	signal=""
+	percent=""
+	connector=""
+	space=""
+fi
+
+echo -e "<span color=\"$color\">$wifi_symbol $ssid$space$connector$space$signal$quality$percent</span>"

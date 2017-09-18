@@ -1,0 +1,15 @@
+#!/bin/bash
+vol=$(pamixer --get-volume)
+color=white
+if [[ $vol -ge 50 ]]; then
+	vol_symbol="\uf028"
+else
+	vol_symbol="\uf027"
+fi
+if [[ $(pamixer --get-mute) == "true" ]]; then
+  vol="mute"
+	vol_symbol="\uf026"
+	color=red
+fi
+
+echo -e "<span color=\"$color\">$vol_symbol $vol</span>"

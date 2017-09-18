@@ -1,0 +1,5 @@
+#!/bin/bash
+
+dbm=$(iw dev wlp4s0 link | grep signal | cut -d " " -f 2)
+signal=$((2*($dbm+100)))
+echo $(($signal>100?100:$signal))
