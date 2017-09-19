@@ -1,5 +1,5 @@
 # Sets real name
-set realname= "Haden Collins"
+set realname= 'gkeyring --name name -o secret'
 
 # Sets how mail is stored
 set mbox_type=maildir
