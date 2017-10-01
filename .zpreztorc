@@ -17,4 +17,4 @@ zstyle ':prezto:load' pmodule \
 zstyle ':prezto:module:autosuggestions:color' found 'fg=240'
 
 # Set key-mapping style to emacs
-zstyle ':prezto:module:editor' key-bindings 'emacs'
+zstyle ':prezto:module:editor' key-bindings 'vi'

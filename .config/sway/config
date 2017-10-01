@@ -27,7 +27,7 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
    }
 
 # sets wallpaper
-output "*" background /home/haden/Downloads/wallpaper8.jpg fill
+output "*" background /home/haden/Downloads/wallpaper10.png fill
 
 # Sets Gaps between windows
 gaps inner 20
@@ -48,7 +48,7 @@ bindsym $mod+Shift+q kill
 # Execcutes startup applications and commands
 exec /home/haden/.config/sway/start.sh
 exec xrdb ~/.Xresources
-exec_always lpoptions -d netinkjet
+exec_always lpoptions -d AirPrint
 exec redshift -c /home/haden/.config/redshift.conf
 exec dunst
 
