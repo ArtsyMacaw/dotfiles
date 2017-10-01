@@ -46,11 +46,11 @@ output eDP1 pos 0,0 res 1920x1080
 bindsym $mod+Shift+q kill
 
 # Execcutes startup applications and commands
-exec /home/haden/.config/sway/start.sh
 exec xrdb ~/.Xresources
 exec_always lpoptions -d AirPrint
 exec redshift -c /home/haden/.config/redshift.conf
 exec dunst
+exec libinput-gestures-setup restart
 
 # Volume Controls
 bindcode 121 exec pamixer -t; exec pkill  -RTMIN+10 i3blocks
@@ -203,7 +203,7 @@ include /etc/sway/config.d/*
 
 # Sets application to start as floating
 for_window [id="gnome-calculator"] floating enable; border pixel
-
+for_window [class="Lxappearance"] floating enable
 # swaybar
 bar {
     status_command i3blocks 
