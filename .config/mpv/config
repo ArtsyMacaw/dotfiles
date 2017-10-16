@@ -1,2 +1,4 @@
 opengl-backend=wayland
 hwdec=vaapi
+ytdl-format=bestvideo[ext=mp4][width<=1920][height<=1080]+bestaudio[ext=m4a]/best[ext=mp4]/best
+no-border

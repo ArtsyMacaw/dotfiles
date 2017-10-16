@@ -12,6 +12,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+echo "Welcome back, ${(C)USER}, good to see you again."
+
 # Sets alias's
 alias pacu='pacaur -Syu --devel --needed'
 alias autoclean='pacaur -R $(pacaur -Qdtq)'

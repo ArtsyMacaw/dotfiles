@@ -23,15 +23,16 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
        natural_scroll enabled
        click_method clickfinger
        middle_emulation disabled
-       dwt enabled
    }
 
 # sets wallpaper
 output "*" background /home/haden/Downloads/wallpaper10.png fill
 
 # Sets Gaps between windows
-gaps inner 20
+gaps inner 10
 gaps outer 0
+
+default_border normal
 
 # start a terminal
 set $term urxvt
@@ -51,6 +52,7 @@ exec_always lpoptions -d AirPrint
 exec redshift -c /home/haden/.config/redshift.conf
 exec dunst
 exec libinput-gestures-setup restart
+exec /usr/lib/xfce-polkit/xfce-polkit
 
 # Volume Controls
 bindcode 121 exec pamixer -t; exec pkill  -RTMIN+10 i3blocks
@@ -61,6 +63,9 @@ bindsym XF86AudioMicMute exec amixer set Capture toggle
 # Brightness controls
 bindcode 232 exec brightnessctl s 10%-
 bindcode 233 exec brightnessctl s +10%
+
+# Screenshot
+bindsym Print exec swaygrab ~/Pictures/screenshots/$(date +"%Y-%m-%d_%H:%M:%S.png")
 
 # Power Controls
 bindsym Control+XF86AudioMute exec /home/haden/lockscreen.sh
@@ -116,7 +121,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+b split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -164,11 +169,22 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
+#
+# Scratchpad:
+#
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
+
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exit
 
@@ -202,13 +218,16 @@ bindsym $mod+r mode "resize"
 include /etc/sway/config.d/*
 
 # Sets application to start as floating
-for_window [id="gnome-calculator"] floating enable; border pixel
+for_window [id="gnome-calculator"] floating enable; border normal
 for_window [class="Lxappearance"] floating enable
+for_window [id="gsimplecal"] floating enable; border pixel
+for_window [id="keepassxc"] border none
+
 # swaybar
 bar {
-    status_command i3blocks 
+    status_command i3blocks
+    tray_output all
     colors {
 	background #2f343f
 	}
-	}
-include /etc/sway/config.d/*
+	
