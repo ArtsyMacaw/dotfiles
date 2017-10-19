@@ -29,8 +29,8 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
 output "*" background /home/haden/Downloads/wallpaper10.png fill
 
 # Sets Gaps between windows
-gaps inner 10
-gaps outer 0
+gaps inner 8
+gaps outer 7
 
 default_border normal
 
@@ -85,7 +85,7 @@ bindsym $mod+Tab exec --no-startup-id thunar
 bindsym $mod+z exec --no-startup-id libreoffice
 bindsym $mod+c exec zim
 bindsym $mod+b exec thunderbird
-bindsym $mod+q exec gnome-calculator
+bindsym $mod+q exec gnome-calculator --mode=advanced
 bindsym $mod+Escape exec zim --plugin quicknote --append true --notebook Notes --page "To-Do List"
 
 # start dmenu (a program launcher)
@@ -222,12 +222,13 @@ for_window [id="gnome-calculator"] floating enable; border normal
 for_window [class="Lxappearance"] floating enable
 for_window [id="gsimplecal"] floating enable; border pixel
 for_window [id="keepassxc"] border none
+for_window [id="zim"] floating enable
 
 # swaybar
 bar {
     status_command i3blocks
     tray_output all
+    font pango:monospace, FontAwesome 8
     colors {
 	background #2f343f
 	}
-	
