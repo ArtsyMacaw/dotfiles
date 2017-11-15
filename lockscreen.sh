@@ -6,4 +6,4 @@ if [ -z "$XDG_RUNTIME_DIR" ] && [ -z "$SWAYSOCK"]; then
 	export XDG_RUNTIME_DIR="/run/user/"$uid"/"
 	export SWAYSOCK=$(find $XDG_RUNTIME_DIR -iname sway*sock)
 fi
-swaylock -i /home/haden/Downloads/lockscreen4.jpg
+swaylock -i /home/haden/Pictures/wallpapers/9

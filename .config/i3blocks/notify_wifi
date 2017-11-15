@@ -28,3 +28,6 @@ if [ $(cat /home/haden/.config/i3blocks/rfkill-state) == "1" ]; then
 fi
 
 echo -e "<span color=\"$color\">$wifi_symbol $ssid$space$connector$space$signal$quality$percent</span>"
+if [[ $BLOCK_BUTTON == "1" ]]; then
+	swaymsg exec networkmanager_dmenu
+fi
