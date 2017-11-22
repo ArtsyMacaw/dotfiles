@@ -239,5 +239,5 @@ bar {
     position top
     font pango:monospace, FontAwesome 8
     colors {
-	background #57505360
+	background #30415999
 	}
