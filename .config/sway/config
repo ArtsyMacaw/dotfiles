@@ -26,7 +26,7 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
    }
 
 # sets wallpaper
-output "*" background /home/haden/Pictures/wallpapers/10 fill
+output "*" background /home/haden/Pictures/wallpapers/2 fill
 
 # Sets Gaps between windows
 gaps inner 8
@@ -36,23 +36,24 @@ default_border normal
 
 # start a terminal
 set $term termite
- bindsym $mod+Return exec GDK_BACKEND=wayland CLUTTER_BACKEND=wayland $term
+ bindsym $mod+Return exec $term
 
 # window decoration
 new_window pixel 0
 for_window [class="^.*"] border pixel 0
-output eDP1 pos 0,0 res 1920x1080
+output eDP1 pos 0,0 res 1920x1080 scale 2
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# Execcutes startup applications and commands
-exec xrdb ~/.Xresources
-exec_always lpoptions -d AirPrint
+# Executes startup applications and commands
+#exec xrdb ~/.Xresources
+#exec_always lpoptions -d AirPrint
 exec redshift -c /home/haden/.config/redshift.conf
 exec dunst
 exec libinput-gestures-setup restart
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec usbguard-applet-qt
 
 # Volume Controls
 bindcode 121 exec pamixer -t; exec pkill  -RTMIN+10 i3blocks
@@ -86,7 +87,7 @@ bindsym XF86WLAN exec /home/haden/.config/i3blocks/rfkill-write; exec pkill  -RT
 bindsym $mod+x exec --no-startup-id keepassxc
 
 # Start Programs
-bindsym $mod+n exec --no-startup-id firefox-developer
+bindsym $mod+n exec --no-startup-id firejail chromium
 bindsym $mod+Tab exec --no-startup-id thunar
 bindsym $mod+z exec --no-startup-id libreoffice
 bindsym $mod+c exec zim
@@ -182,11 +183,11 @@ bindsym $mod+Shift+0 move container to workspace 10
 # You can send windows there and get them back later.
 
 # Move the currently focused window to the scratchpad
-bindsym $mod+equal move scratchpad
+bindsym $mod+minus move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show
+bindsym $mod+equal scratchpad show
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -196,7 +197,7 @@ bindsym $mod+Shift+e exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+ # These bindings trigger as soon as you enter the resize mode
 
         # Pressing left will shrink the window’s width.
         # Pressing right will grow the window’s width.
@@ -217,7 +218,6 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
 bindsym $mod+r mode "resize"
 
 # Security rules
