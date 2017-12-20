@@ -16,7 +16,7 @@ echo "Welcome back, ${(C)USER}, good to see you again."
 
 # Sets alias's
 alias pacu='pacaur -Syu --devel --needed'
-alias autoclean='pacaur -R $(pacaur -Qdtq)'
+alias pac-autoclean='pacaur -R $(pacaur -Qdtq)'
 alias extract='tar -xvf'
 alias pacr='pacaur -Rns'
 alias paci='pacaur -S'

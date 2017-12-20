@@ -87,7 +87,7 @@ bindsym XF86WLAN exec /home/haden/.config/i3blocks/rfkill-write; exec pkill  -RT
 bindsym $mod+x exec --no-startup-id keepassxc
 
 # Start Programs
-bindsym $mod+n exec --no-startup-id firejail chromium
+bindsym $mod+n exec --no-startup-id QT_QPA_PLATFORM=wayland-egl QT_WAYLAND_DISABLE_WINDOWDECORATION=1 qutebrowser --backend webkit
 bindsym $mod+Tab exec --no-startup-id thunar
 bindsym $mod+z exec --no-startup-id libreoffice
 bindsym $mod+c exec zim
