@@ -20,16 +20,18 @@ set $menu /home/haden/.config/bin/search
 output * bg /home/haden/Downloads/cooler.png.jpg fill
 
 # window decoration
-for_window [class="^.*"] border pixel 2
+default_border pixel 1
 for_window [app_id="network"] border pixel 0; floating enable; resize set 600 290;
 for_window [app_id="search"] border pixel 0; floating enable; resize set 600 290;
 for_window [app_id="pass"] border pixel 0; floating enable; resize set 600 290;
+
+# Border Color
+client.focused #e95420 #e95420 #e95420 #e95420 #e95420
 
 # Sets Gaps between windows
 gaps inner 8
 gaps outer 1
 smart_gaps on
-default_border normal
 
 # Display Settings
 output eDP1 pos 0,0 res 1920x1080 scale 2
