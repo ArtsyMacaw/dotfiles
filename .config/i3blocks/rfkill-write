@@ -1,6 +1,0 @@
-#!/bin/bash
-if [ $(cat /home/haden/.config/i3blocks/rfkill-state) == "0" ]; then
-	echo "1" > /home/haden/.config/i3blocks/rfkill-state
-else
-	echo "0" > /home/haden/.config/i3blocks/rfkill-state
-fi
