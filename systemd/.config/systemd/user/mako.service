@@ -1,0 +1,12 @@
+[Unit]
+After=display-manager.service
+
+[Service]
+ExecStart=/bin/mako
+Restart=always
+PrivateTmp=true
+RestartSec=100ms
+
+[Install]
+WantedBy=default.target
+
