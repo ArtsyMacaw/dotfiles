@@ -1,0 +1,15 @@
+#!/bin/bash
+# Used to select wifi requires Network Manager, fzf, sed, and bash
+wifi=$(nmcli -t d wifi list | sed s_:__ | sed 's_WPA2__' | sed 's_WPA__' | sed 's_WEP__' | sed -e 's/\(:\).*\(:\)/\1/' | sed '/^\( :\)/d' | sed 's_:__' | sed 's/^ //' | sed -e 's/#.*//' -e 's/[ ^I]*$//' -e '/^$/ d' | fzf --color=dark,fg+:#F7F7F7,bg:#181818,hl:#3EB34F --reverse --border --inline-info)
+if [ "${wifi: -1}" == "" ];  then
+    wifi=${wifi%?}
+    con=$(nmcli c show | grep "$wifi")
+    if [ -z "$con" ]; then
+        read -s -p "Enter Password: " pass
+        nmcli d wifi connect "$wifi" password "$pass"
+    else
+        nmcli c up "$wifi"
+    fi
+else
+    nmcli d wifi connect "$wifi"
+fi
