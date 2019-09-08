@@ -5,8 +5,8 @@
     // "width": 1280, // Waybar width
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["pulseaudio", "network", "battery", "battery#bat2", "clock", "tray"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "network", "network#vpn", "battery", "battery#bat2", "tray"],
     // Modules configuration
     // "sway/workspaces": {
     //     "disable-scroll": true,
@@ -63,10 +63,14 @@
         // "icon-size": 21,
         "spacing": 10
     },
+    "network#vpn": {
+        "interface": "home",
+        "format-wifi": "🔒",
+        "format-ethernet": "🔒",
+        "format-disconnected": "🔓"
+    },
     "clock": {
-        "format": "{:%I:%M%p}",
-        "tooltip-format": "{:%Y-%m-%d | %H:%M}",
-        "format-alt": "{:%Y-%m-%d}"
+        "format": "{:%a %b %d, %I:%M%p}"
     },
     "cpu": {
         "format": "{usage}% ",
