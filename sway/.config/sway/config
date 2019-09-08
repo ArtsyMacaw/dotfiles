@@ -21,9 +21,10 @@ output * bg /home/haden/Downloads/cooler.png.jpg fill
 
 # window decoration
 default_border pixel 1
-for_window [app_id="network"] border pixel 0; floating enable; resize set 600 290;
-for_window [app_id="search"] border pixel 0; floating enable; resize set 600 290;
-for_window [app_id="pass"] border pixel 0; floating enable; resize set 600 290;
+for_window [app_id="network"] border pixel 0; floating enable; resize set 600 290
+for_window [app_id="search"] border pixel 0; floating enable; resize set 600 290
+for_window [app_id="pass"] border pixel 0; floating enable; resize set 600 290
+for_window [title="wl-clipboard"] floating enable
 
 # Border Color
 client.focused #e95420 #e95420 #e95420 #e95420 #e95420
@@ -36,7 +37,13 @@ smart_gaps on
 # Display Settings
 output eDP1 pos 0,0 res 1920x1080 scale 2
 
-# Touchpad Settings
+# Lock Screen
+exec swayidle -w \
+         timeout 300 'swaylock -f -i /home/haden/Downloads/enjoying-the-view-1920×1080.jpg' \
+         timeout 600 'swaymsg "output * dpms off"' \
+              resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f -i /home/haden/Downloads/enjoying-the-view-1920×1080.jpg'
+
 input "2:7:SynPS/2_Synaptics_TouchPad" {
        tap disabled
        natural_scroll enabled
@@ -63,9 +70,9 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+Shift+n exec /home/haden/.config/bin/network
 
     # Volume Controls
-    bindcode 121 exec pamixer -t; exec pkill  -RTMIN+10 i3blocks
-    bindcode 122 exec pamixer -d 5; exec pkill  -RTMIN+10 i3blocks
-    bindcode 123 exec pamixer -i 5; exec pkill  -RTMIN+10 i3blocks
+    bindcode 121 exec pamixer -t
+    bindcode 122 exec pamixer -d 5
+    bindcode 123 exec pamixer -i 5
     bindsym XF86AudioMicMute exec amixer set Capture toggle 
     
     # Start Firefox
