@@ -1,6 +1,6 @@
 #!/bin/bash
 # Used to select wifi requires Network Manager, fzf, sed, and bash
-wifi=$(nmcli -t d wifi list | sed s_:__ | sed 's_WPA2__' | sed 's_WPA__' | sed 's_WEP__' | sed -e 's/\(:\).*\(:\)/\1/' | sed '/^\( :\)/d' | sed 's_:__' | sed 's/^ //' | sed -e 's/#.*//' -e 's/[ ^I]*$//' -e '/^$/ d' | fzf --color=fg:#F7F7F7,bg:#2b2929,hl:#19B6EE,fg+:#F7F7F7,bg+:235,hl+:81,hl+:#3EB34F --color=info:#F7F7F7,prompt:#e95420,spinner:135,pointer:#e95420,marker:#e95420 --border --reverse --inline-info)
+wifi=$(nmcli -t d wifi list | sed s_:__ | sed 's_WPA2__' | sed 's_WPA__' | sed 's_WEP__' | sed -e 's/\(:\).*\(:\)/\1/' | sed '/^\( :\)/d' | sed 's_:__' | sed 's/^ //' | sed -e 's/#.*//' -e 's/[ ^I]*$//' -e '/^$/ d' | fzf --color=fg:#F7F7F7,bg:#2b2929,hl:#F7F7F7,fg+:#F7F7F7,hl+:#F7F7F7,bg+:#e95420 --color=info:#2b2929,prompt:#2b2929,spinner:#2b2929,pointer:#e95420,marker:#2b2929,gutter:#2b2929 --bind='tab:toggle-down,btab:toggle-up' --border --reverse --inline-info)
 if [ "${wifi: -1}" == "" ];  then
     wifi=${wifi%?}
     con=$(nmcli c show | grep "$wifi")
