@@ -1,3 +1,3 @@
 #!/bin/bash
 # Used to select and start programs in sway requires fzf, sway, and bash
-compgen -c | sort -u | fzf --color=dark,fg+:#F7F7F7,bg:#181818,hl:#3EB34F --reverse --border --history=/home/haden/.SHISTORY --inline-info | xargs -r swaymsg -t command exec
+compgen -c | sort -u | fzf --color=fg:#F7F7F7,bg:#2b2929,hl:#19B6EE,fg+:#F7F7F7,bg+:235,hl+:81,hl+:#3EB34F --color=info:#F7F7F7,prompt:#e95420,spinner:135,pointer:#e95420,marker:#e95420 --reverse --border --history=/home/haden/.SHISTORY --inline-info | xargs -r swaymsg -t command exec
