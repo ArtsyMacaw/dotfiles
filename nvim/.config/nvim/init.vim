@@ -18,3 +18,4 @@ set wildmenu        " command line completion
 set showcmd
 set backspace=indent,eol,start
 set nostartofline
+set undofile        " Persistent undo

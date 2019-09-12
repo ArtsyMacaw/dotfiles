@@ -63,10 +63,16 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+Return exec $term
 
     # Password Manager
-    bindsym $mod+Shift+p exec /home/haden/.config/bin/password
+    bindsym $mod+x exec /home/haden/.config/bin/password
 
     # Choose wif
     bindsym $mod+Shift+n exec /home/haden/.config/bin/network
+
+    # Take screenshot of selected area
+    bindsym $mod+Shift+p exec "slurp | grim -g - $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')"
+
+    # Take screenshot
+    bindsym $mod+p exec "grim $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')"
 
     # Volume Controls
     bindcode 121 exec pamixer -t
