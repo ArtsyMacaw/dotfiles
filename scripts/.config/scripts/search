@@ -1,3 +1,8 @@
 #!/bin/bash
-# Used to select and start programs in sway requires fzf, sway, and bash
-compgen -c | sort -u | fzf --color=fg:#F7F7F7,bg:#2b2929,hl:#F7F7F7,fg+:#F7F7F7,bg+:235,hl+:#F7F7F7,bg+:#e95420 --color=info:#2b2929,prompt:#F7F7F7,spinner:#2b2929,pointer:#e95420,marker:#2b2929,gutter:#2b2929 --bind='tab:toggle-down,btab:toggle-up' --reverse --border --prompt='Launch: ' --history=/home/haden/.SHISTORY | xargs -r swaymsg -t command exec
+# Menu to select and launch desktop entries
+# Requires fzf, ripgrep(can be substituted for gnu grep), sed, bash, basename, sway, gtk-launch, and j4-dmenu-desktop plus its associated script
+
+initial=$($HOME/.config/scripts/desktop-entries | fzf --color=fg:#F7F7F7,bg:#2b2929,hl:#F7F7F7,fg+:#F7F7F7,bg+:235,hl+:#F7F7F7,bg+:#e95420 --color=info:#2b2929,prompt:#F7F7F7,spinner:#2b2929,pointer:#e95420,marker:#2b2929,gutter:#2b2929 --bind='tab:toggle-down,btab:toggle-up' --reverse --border --prompt='Launch: ' --history=$HOME/.HISTORY)
+search=$(rg -rl Name="$initial" /usr/share/applications/* $HOME/.local/share/applications/* | sed 's/\:.*/:/' | sed s_:__)
+base=$(basename "$search")
+swaymsg exec gtk-launch "$base"
