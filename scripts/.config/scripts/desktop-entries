@@ -7,7 +7,6 @@ then
     at now <<EOF
         DISPLAY=$DISPLAY j4-dmenu-desktop --dmenu="(cat &> /dev/null) | (echo '$@')"
 EOF
-    #exit 0  # a question of wanted behaviour?
 fi
 
 PIPE=$(mktemp -u)

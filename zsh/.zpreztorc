@@ -4,6 +4,7 @@ zstyle ':prezto:module:prompt' theme 'agnoster'
 # Set order of prezto modules
 zstyle ':prezto:load' pmodule \
 'environment' \
+'terminal' \
 'editor' \
 'utility' \
 'completion' \
@@ -16,5 +17,5 @@ zstyle ':prezto:load' pmodule \
 # Sets the query found color
 zstyle ':prezto:module:autosuggestions:color' found 'fg=240'
 
-# Set key-mapping style to emacs
+# Set key-mapping style to vim
 zstyle ':prezto:module:editor' key-bindings 'vi'

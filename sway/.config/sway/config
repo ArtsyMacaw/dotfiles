@@ -1,4 +1,5 @@
 ### Variables
+
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 
@@ -15,6 +16,7 @@ set $term termite
 set $menu /home/haden/.config/bin/search 
 
 ### Output configuration
+
 # Default wallpaper 
 output * bg /home/haden/Downloads/cooler.png.jpg fill
 
@@ -23,14 +25,14 @@ default_border pixel 1
 for_window [app_id="network"] border pixel 0; floating enable; resize set 600 290
 for_window [app_id="search"] border pixel 0; floating enable; resize set 600 290
 for_window [app_id="pass"] border pixel 0; floating enable; resize set 600 290
-for_window [title="wl-clipboard"] floating enable
+#for_window [title="wl-clipboard"] floating enable
 
 # Border Color
 client.focused #e95420 #e95420 #e95420 #e95420 #e95420
 
 # Sets Gaps between windows
-gaps inner 8
-gaps outer 1
+gaps inner 14
+gaps outer 8
 smart_gaps on
 
 # Display Settings
@@ -43,6 +45,7 @@ exec swayidle -w \
               resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f -i /home/haden/Downloads/enjoying-the-view-1920×1080.jpg'
 
+# Touchpad Settings
 input "2:7:SynPS/2_Synaptics_TouchPad" {
        tap disabled
        natural_scroll enabled
@@ -56,6 +59,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 }
 
 ### Key bindings
+
 #
 # Basics:
 #
@@ -192,11 +196,11 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+minus move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+    bindsym $mod+equal scratchpad show
 #
 # Resizing containers:
 #
@@ -221,10 +225,6 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-
-#
-# Status Bar
-#
 
 bar {
         swaybar_command waybar
