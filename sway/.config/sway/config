@@ -25,7 +25,6 @@ default_border pixel 1
 for_window [app_id="network"] border pixel 0; floating enable; resize set 600 290
 for_window [app_id="search"] border pixel 0; floating enable; resize set 600 290
 for_window [app_id="pass"] border pixel 0; floating enable; resize set 600 290
-#for_window [title="wl-clipboard"] floating enable
 
 # Border Color
 client.focused #e95420 #e95420 #e95420 #e95420 #e95420
