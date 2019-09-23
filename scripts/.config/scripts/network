@@ -15,16 +15,21 @@ if [ "${wifi: -1}" == "" ];  then
         read -s -p "Enter Password: " pass
         swaymsg move container scratchpad
         nmcli d wifi connect "$wifi" password "$pass"
+        notify-send "Connected to $wifi"
         exit 0
     else
         swaymsg move container scratchpad
         nmcli c up "$wifi"
+        notify-send "Connected to $wifi"
         exit 0
     fi
 else
     swaymsg move container scratchpad
     nmcli d wifi connect "$wifi"
+    notify-send "Connected to $wifi"
     exit 0
 fi
+
+notify-send "Failed to connect to $wifi"
 
 exit 1

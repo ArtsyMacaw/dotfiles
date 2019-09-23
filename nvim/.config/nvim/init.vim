@@ -10,7 +10,7 @@ set number          " show line number
 set showcmd         " show command in bottom bar
 set cursorline      " highlight current line
 set incsearch       " search as characters are entered
-set hlsearch        " highlight matche
+set hlsearch        " highlight match
 set ignorecase      " ignore case when searching
 set smartcase       " ignore case if search pattern is lower case case-sensitive otherwise
 set guicursor=a:ver50   " sets ibeam cursor
@@ -19,3 +19,4 @@ set showcmd
 set backspace=indent,eol,start
 set nostartofline
 set undofile        " Persistent undo
+colorscheme color
