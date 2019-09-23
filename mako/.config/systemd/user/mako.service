@@ -5,7 +5,7 @@ After=display-manager.service
 ExecStart=/bin/mako
 Restart=always
 PrivateTmp=true
-RestartSec=100ms
+RestartSec=1s
 
 [Install]
 WantedBy=default.target
