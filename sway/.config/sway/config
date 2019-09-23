@@ -1,8 +1,5 @@
 ### Variables
 
-# Home directory
-set $HOME /home/haden/
-
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 
@@ -16,12 +13,12 @@ set $right l
 set $term termite
 
 # application launcher
-set $menu $HOME.local/bin/search
+set $menu search
 
 ### Output configuration
 
 # Default wallpaper 
-output * bg $HOMEDownloads/cooler.png.jpg fill
+output * bg "~/Downloads/cooler.png.jpg" fill
 
 # window decoration
 default_border pixel 1
@@ -69,10 +66,10 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+Return exec $term
 
     # Password Manager
-    bindsym $mod+x exec $HOME.local/bin/password
+    bindsym $mod+x exec password
 
     # Choose wifi
-    bindsym $mod+Shift+n exec $HOME.local/bin/network
+    bindsym $mod+Shift+n exec network
 
     # Take screenshot of selected area
     bindsym $mod+Shift+p exec "slurp | grim -g - $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')"
