@@ -19,7 +19,3 @@ alias pacr='yay -Rns'
 alias paci='yay -S'
 alias vim='nvim'
 alias rg='grep'
-
-# Sets default editor
-export VISUAL=nvim
-export EDITOR=nvim

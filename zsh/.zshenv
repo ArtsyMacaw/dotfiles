@@ -7,4 +7,9 @@ fi
 # Starts firefox with wayland
 export MOZ_ENABLE_WAYLAND=1
 
-export PATH=/home/haden/.config/bin:$PATH
+# Sets path if distro has not already
+export PATH="$HOME/.local/bin:$PATH"
+
+# Sets default editor
+export VISUAL=nvim
+export EDITOR=nvim
