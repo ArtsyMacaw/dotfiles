@@ -38,13 +38,6 @@ smart_gaps on
 # Display Settings
 output eDP1 pos 0,0 res 1920x1080 scale 2
 
-# Lock Screen
-exec swayidle -w \
-         timeout 300 'swaylock -f -i /home/haden/Downloads/enjoying-the-view-1920×1080.jpg' \
-         timeout 600 'swaymsg "output * dpms off"' \
-              resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -i /home/haden/Downloads/enjoying-the-view-1920×1080.jpg'
-
 # Touchpad Settings
 input "2:7:SynPS/2_Synaptics_TouchPad" {
        tap disabled
@@ -241,9 +234,7 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-bar {
-        swaybar_command waybar
-    }
-}
-
 include /etc/sway/config.d/*
+
+# Set sway-session.target
+exec "systemctl --user import-environment; systemctl --user start sway-session.target"
