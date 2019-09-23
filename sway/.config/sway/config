@@ -25,6 +25,7 @@ default_border pixel 1
 for_window [app_id="network"] border pixel 0; floating enable; resize set 600 290
 for_window [app_id="search"] border pixel 0; floating enable; resize set 600 290
 for_window [app_id="pass"] border pixel 0; floating enable; resize set 600 290
+for_window [app_id="pavucontrol"] border pixel 0; floating enable; resize set 600 290
 
 # Border Color
 client.focused #e95420 #e95420 #e95420 #e95420 #e95420
@@ -72,10 +73,16 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+Shift+n exec network
 
     # Take screenshot of selected area
-    bindsym $mod+Shift+p exec "slurp | grim -g - $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')"
+    bindsym $mod+o exec "slurp | grim -g - $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')"
+
+    # Copy screenshot of selected area
+    bindsym $mod+Shift+o exec "slurp | grim -g - - | wl-copy"
 
     # Take screenshot
     bindsym $mod+p exec "grim $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')"
+
+    # Copy screenshot
+    bindsym $mod+Shift+p exec "grim - | wl-copy"
 
     # Volume Controls
     bindcode 121 exec pamixer -t
@@ -110,7 +117,16 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    mode "Logout" {
+        bindsym 1 exec 'swaylock -f -i /home/haden/Downloads/enjoying-the-view-1920×1080.jpg'
+        bindsym 2 exec swaymsg exit
+        bindsym 3 exec systemctl suspend
+        bindsym 4 exec systemctl hibernate
+        bindsym 5 exec 'shutdown -h now'
+        bindsym Escape mode "default"
+        bindsym Return mode "default"
+    }
+    bindsym $mod+Shift+e mode "Logout"
 
 #
 # Moving around:
