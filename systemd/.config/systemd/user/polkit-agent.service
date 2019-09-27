@@ -6,6 +6,7 @@ ExecStart=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 Restart=always
 PrivateTmp=true
 RestartSec=1s
+NoNewPrivileges=true
 
 [Install]
 WantedBy=default.target
