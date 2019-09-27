@@ -6,6 +6,7 @@ ExecStart=/bin/mako
 Restart=always
 PrivateTmp=true
 RestartSec=1s
+NoNewPrivileges=true
 
 [Install]
 WantedBy=sway-session.target
