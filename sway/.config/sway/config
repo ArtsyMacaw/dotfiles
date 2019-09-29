@@ -20,6 +20,9 @@ set $menu search
 # Default wallpaper 
 output * bg "~/Downloads/cooler.png.jpg" fill
 
+# Disable XWayland
+xwayland disable
+
 # window decoration
 default_border pixel 1
 for_window [app_id="network"] border pixel 0; floating enable; resize set 600 290
@@ -59,6 +62,9 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     # Start a terminal
     bindsym $mod+Return exec $term
 
+    # Start file manager
+    bindsym $mod+Tab exec nautilus
+
     # Password Manager
     bindsym $mod+x exec password
 
@@ -78,9 +84,9 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+Shift+p exec "grim - | wl-copy"
 
     # Volume Controls
-    bindcode 121 exec pamixer -t
-    bindcode 122 exec pamixer -d 5
-    bindcode 123 exec pamixer -i 5
+    bindsym XF86AudioMute exec pamixer -t
+    bindsym XF86AudioLowerVolume exec pamixer -d 5
+    bindsym XF86AudioRaiseVolume exec pamixer -i 5
     bindsym XF86AudioMicMute exec amixer set Capture toggle 
     
     # Start Firefox
@@ -90,8 +96,8 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+c exec termite --exec=aerc
 
     # Brightness controls
-    bindcode 232 exec brightnessctl s 10%-
-    bindcode 233 exec brightnessctl s +10%  
+    bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
+    bindsym XF86MonBrightnessUp exec brightnessctl s +10%  
 
     # Kill focused window
     bindsym $mod+Shift+q kill
