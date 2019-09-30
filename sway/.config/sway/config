@@ -74,16 +74,16 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+Shift+n exec network
 
     # Take screenshot of selected area
-    bindsym $mod+o exec "slurp | grim -g - $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')"
+    bindsym $mod+o exec "slurp | grim -g - $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png') && notify-send 'Screenshot Taken"
 
     # Copy screenshot of selected area
-    bindsym $mod+Shift+o exec "slurp | grim -g - - | wl-copy"
+    bindsym $mod+Shift+o exec "slurp | grim -g - - | wl-copy && notify-send 'Screenshot Copied to Clipboard'"
 
     # Take screenshot
-    bindsym $mod+p exec "grim $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')"
+    bindsym $mod+p exec "grim $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png') && notify-send 'Screenshot Taken'"
 
     # Copy screenshot
-    bindsym $mod+Shift+p exec "grim - | wl-copy"
+    bindsym $mod+Shift+p exec "grim - | wl-copy && notify-send 'Screenshot Copied to Clipboard'"
 
     # Volume Controls
     bindsym XF86AudioMute exec pamixer -t
