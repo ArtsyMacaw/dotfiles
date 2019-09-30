@@ -10,4 +10,3 @@ NoNewPrivileges=true
 
 [Install]
 WantedBy=sway-session.target
-
