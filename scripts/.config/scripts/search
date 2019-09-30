@@ -2,7 +2,7 @@
 # Menu to select and launch desktop entries
 # Requires fzf, ripgrep(can be substituted for gnu grep), sed, bash, basename, sway, gtk-launch, and j4-dmenu-desktop plus its associated script
 
-initial=$($HOME/.config/scripts/desktop-entries | fzf --color=fg:#F7F7F7,bg:#2b2929,hl:#F7F7F7,fg+:#F7F7F7,bg+:235,hl+:#F7F7F7,bg+:#e95420 --color=info:#2b2929,prompt:#F7F7F7,spinner:#2b2929,pointer:#e95420,marker:#2b2929,gutter:#2b2929 --bind='tab:toggle-down,btab:toggle-up' --reverse --border --prompt='Launch: ' --history=$HOME/.HISTORY)
+initial=$($HOME/.config/scripts/desktop-entries | fzf --prompt="Launch: ")
 
 swaymsg move container scratchpad
 

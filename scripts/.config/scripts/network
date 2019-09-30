@@ -2,7 +2,7 @@
 # Used to select wifi 
 # Requires Network Manager, fzf, font awesome, sed, and bash (Also requires sway however swaymsg commands can be removed; only side effect is window stays on screen till process is finished)
 
-wifi=$(nmcli -t d wifi list | sed s_:__ | sed 's_WPA2__' | sed 's_WPA__' | sed 's_WEP__' | sed -e 's/\(:\).*\(:\)/\1/' | sed '/^\( :\)/d' | sed 's_:__' | sed 's/^ //' | sed -e 's/#.*//' -e 's/[ ^I]*$//' -e '/^$/ d' | fzf --color=fg:#F7F7F7,bg:#2b2929,hl:#F7F7F7,fg+:#F7F7F7,hl+:#F7F7F7,bg+:#e95420 --color=info:#2b2929,prompt:#F7F7F7,spinner:#2b2929,pointer:#e95420,marker:#2b2929,gutter:#2b2929 --prompt='Network: ' --bind='tab:toggle-down,btab:toggle-up' --border --reverse)
+wifi=$(nmcli -t d wifi list | sed s_:__ | sed 's_WPA2__' | sed 's_WPA__' | sed 's_WEP__' | sed -e 's/\(:\).*\(:\)/\1/' | sed '/^\( :\)/d' | sed 's_:__' | sed 's/^ //' | sed -e 's/#.*//' -e 's/[ ^I]*$//' -e '/^$/ d' | fzf --prompt="Network: ")
 
 if [ "${wifi:0:1}" == "*" ]; then
     exit 0

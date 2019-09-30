@@ -240,7 +240,5 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-include /etc/sway/config.d/*
-
 # Set sway-session.target
 exec "systemctl --user import-environment; systemctl --user start sway-session.target"
