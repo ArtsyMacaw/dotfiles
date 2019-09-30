@@ -25,10 +25,7 @@ xwayland disable
 
 # window decoration
 default_border pixel 1
-for_window [app_id="network"] border pixel 0; floating enable; resize set 600 290
-for_window [app_id="search"] border pixel 0; floating enable; resize set 600 290
-for_window [app_id="pass"] border pixel 0; floating enable; resize set 600 290
-for_window [app_id="pavucontrol"] border pixel 0; floating enable; resize set 600 290
+for_window [app_id="menu"] border pixel 0; floating enable; resize set 600 290
 
 # Border Color
 client.focused #e95420 #e95420 #e95420 #e95420 #e95420
@@ -67,6 +64,9 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 
     # Password Manager
     bindsym $mod+x exec password
+
+    # Password Manager Options
+    bindsym $mod+Shift+x exec password-options
 
     # Choose wifi
     bindsym $mod+Shift+n exec network
