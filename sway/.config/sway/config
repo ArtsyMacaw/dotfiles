@@ -26,6 +26,7 @@ xwayland disable
 # window decoration
 default_border pixel 1
 for_window [app_id="menu"] border pixel 0; floating enable; resize set 600 290
+for_window [app_id="drop-down-terminal"] border pixel 0; floating enable; resize set 1920 400; move up 325 px
 
 # Border Color
 client.focused #e95420 #e95420 #e95420 #e95420 #e95420
@@ -58,6 +59,9 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+
+    # Start drop down terminal
+    bindsym $mod+grave exec termite --name="drop-down-terminal" --config ~/.config/termite/drop-down
 
     # Start file manager
     bindsym $mod+Tab exec nautilus
