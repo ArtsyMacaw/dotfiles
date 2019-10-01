@@ -5,29 +5,63 @@
 wifi=$(nmcli -t d wifi list | sed s_:__ | sed 's_WPA2__' | sed 's_WPA__' | sed 's_WEP__' | sed -e 's/\(:\).*\(:\)/\1/' | sed '/^\( :\)/d' | sed 's_:__' | sed 's/^ //' | sed -e 's/#.*//' -e 's/[ ^I]*$//' -e '/^$/ d' | fzf --prompt="Network: ")
 
 if [ "${wifi:0:1}" == "*" ]; then
+
+    swaymsg move container scratchpad
+
+    wifi=$(echo "$wifi" | sed s_*__)
+
+    if [ "${wifi: -1}" == "" ];  then
+
+        wifi=${wifi%?}
+
+    fi
+
+    nmcli connection down "$wifi"
+
+    notify-send "Disconnected from $wifi"
+
     exit 0
 fi
 
 if [ "${wifi: -1}" == "" ];  then
+
     wifi=${wifi%?}
+
     con=$(nmcli c show | grep "$wifi")
+
     if [ -z "$con" ]; then
+
         read -s -p "Enter Password: " pass
+
         swaymsg move container scratchpad
+
         nmcli d wifi connect "$wifi" password "$pass"
+
         notify-send "Connected to $wifi"
+
         exit 0
+
     else
+
         swaymsg move container scratchpad
+
         nmcli c up "$wifi"
+
         notify-send "Connected to $wifi"
+
         exit 0
+
     fi
 else
+
     swaymsg move container scratchpad
+
     nmcli d wifi connect "$wifi"
+
     notify-send "Connected to $wifi"
+
     exit 0
+
 fi
 
 notify-send "Failed to connect to $wifi"
