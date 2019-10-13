@@ -13,9 +13,8 @@ zstyle ':prezto:load' pmodule \
 # Sets the query found color
 zstyle ':prezto:module:autosuggestions:color' found 'fg=240'
 
-# Set key-mapping style to vim
-zstyle ':prezto:module:editor' key-bindings 'vi'
-zstyle ':prezto:module:editor' ps-context 'yes'
+# Set key-mapping style to emacs
+zstyle ':prezto:module:editor' key-bindings 'emacs'
 
 # Sets Cli theme
 zstyle ':prezto:module:prompt' theme 'agnoster'
