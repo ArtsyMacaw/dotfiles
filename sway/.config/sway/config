@@ -18,29 +18,27 @@ set $menu search
 ### Output configuration
 
 # Default wallpaper 
-output * bg "~/Downloads/cooler.png.jpg" fill
-
-# Disable XWayland
-xwayland disable
+output * bg "~/Downloads/cool.jpg" fill 
 
 # window decoration
-default_border pixel 1
-for_window [app_id="menu"] border pixel 0; floating enable; resize set 600 290
+default_border pixel 3
+for_window [app_id="menu"] border pixel 0; floating enable; resize set 1270 680
 for_window [app_id="drop-down-terminal"] border pixel 0; floating enable; resize set 1920 400; move up 325 px
 
 # Border Color
-client.focused #e95420 #e95420 #e95420 #e95420 #e95420
+client.focused #1A5FB4 #1A5FB4 #1A5FB4 #1A5FB4 #1A5FB4
+smart_borders on
 
 # Sets Gaps between windows
+gaps top 20
 gaps inner 14
-gaps outer 8
-smart_gaps on
 
 # Display Settings
-output eDP1 pos 0,0 res 1920x1080 scale 2
+output eDP1 pos 0,0 res 3840x2160
+output eDP1 scale 2
 
 # Touchpad Settings
-input "2:7:SynPS/2_Synaptics_TouchPad" {
+input "1739:30383:CUST0001:00_06CB:76AF_Touchpad" {
        tap disabled
        natural_scroll enabled
        click_method clickfinger

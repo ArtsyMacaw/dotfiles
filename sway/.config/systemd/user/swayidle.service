@@ -6,13 +6,13 @@ PartOf=graphical-session.target
 [Service]
 Type=simple
 ExecStart=/usr/bin/swayidle -w \
-            timeout 300 'swaylock -f -i /home/haden/Downloads/enjoying-the-view-1920×1080.jpg' \
+            timeout 300 'swaylock -f -i /home/haden/Downloads/dragon.jpg' \
             timeout 600 'swaymsg "output * dpms off"' \
                 resume 'swaymsg "output * dpms on"' \
-            before-sleep 'swaylock -f -i /home/haden/Downloads/enjoying-the-view-1920×1080.jpg'
-Restart=always
+            before-sleep 'swaylock -f -i /home/haden/Downloads/dragon.jpg'
+Restart=on-failure
 PrivateTmp=true
-RestartSec=1s
+RestartSec=2s
 
 [Install]
 WantedBy=sway-session.target

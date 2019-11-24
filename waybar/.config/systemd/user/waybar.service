@@ -4,9 +4,9 @@ PartOf=graphical-session.target
 [Service]
 Type=simple
 ExecStart=/usr/bin/waybar
-Restart=always
+Restart=on-failure
 PrivateTmp=true
-RestartSec=1s
+RestartSec=2s
 NoNewPrivileges=true
 
 [Install]

@@ -2,13 +2,13 @@
     border: none;
     border-radius: 0;
     font-family: Roboto, sans-serif;
-    font-size: 13px;
-    min-height: 0;
+    font-size: 30px;
+    min-height: 47px;
 }
 
 window#waybar {
     background-color: rgba(24, 24, 24, .9);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    border-bottom: 6px solid rgba(100, 114, 125, 0.5);
     color: #F2F1F0;
     transition-property: background-color;
     transition-duration: .5s;
@@ -19,21 +19,21 @@ window#waybar.hidden {
 }
 
 #workspaces button {
-    padding: 0 5px;
+    padding: 0 15px;
     background-color: transparent;
     color: #F2F1F0;
-    border-bottom: 3px solid transparent;
+    border-bottom: 6px solid transparent;
 }
 
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.2);
     box-shadow: inherit;
-    border-bottom: 3px solid #ffffff;
+    border-bottom: 6px solid #ffffff;
 }
 
 #workspaces button.focused {
     background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
+    border-bottom: 6px solid #ffffff;
 }
 
 #workspaces button.urgent {
@@ -42,7 +42,7 @@ window#waybar.hidden {
 
 #mode {
     background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
+    border-bottom: 6px solid #ffffff;
 }
 
 #clock,
@@ -57,18 +57,18 @@ window#waybar.hidden {
 #tray,
 #mode,
 #idle_inhibitor {
-    padding: 0 10px;
+    padding: 0 17px;
     margin: 0 4px;
     color: #ffffff;
 }
 
 #clock {
     background-color: rgba(24, 24, 24, .9);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5); }
+    border-bottom: 6px solid rgba(100, 114, 125, 0.5); }
 
 #battery {
     background-color: rgba(24, 24, 24, .9);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    border-bottom: 6px solid rgba(100, 114, 125, 0.5);
 }
 
 #battery.charging {
@@ -79,7 +79,7 @@ window#waybar.hidden {
 @keyframes blink {
     to {
         background-color: rgba(24, 24, 24, .9);
-        border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+        border-bottom: 6px solid rgba(100, 114, 125, 0.5);
     }
 }
 
@@ -112,22 +112,22 @@ label:focus {
 
 #network {
     background-color: rgba(24, 24, 24, .9);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    border-bottom: 6px solid rgba(100, 114, 125, 0.5);
 }
 
 #network.disconnected {
     background-color: rgba(24, 24, 24, .9);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    border-bottom: 6px solid rgba(100, 114, 125, 0.5);
 }
 
 #pulseaudio {
     background-color: rgba(24, 24, 24, .9);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    border-bottom: 6px solid rgba(100, 114, 125, 0.5);
 }
 
 #pulseaudio.muted {
     background-color: rgba(24, 24, 24, .9);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    border-bottom: 6px solid rgba(100, 114, 125, 0.5);
 }
 
 #custom-media {

@@ -3,9 +3,9 @@ After=display-manager.service
 
 [Service]
 ExecStart=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-Restart=always
+Restart=on-failure
 PrivateTmp=true
-RestartSec=1s
+RestartSec=2s
 NoNewPrivileges=true
 
 [Install]
