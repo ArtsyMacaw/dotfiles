@@ -6,10 +6,10 @@ PartOf=graphical-session.target
 [Service]
 Type=simple
 ExecStart=/usr/bin/swayidle -w \
-            timeout 300 'swaylock -f -i /home/haden/Downloads/dragon.jpg' \
+            timeout 300 'swaylock --indicator-radius 100 -f -i /home/haden/Downloads/dragon.jpg' \
             timeout 600 'swaymsg "output * dpms off"' \
                 resume 'swaymsg "output * dpms on"' \
-            before-sleep 'swaylock -f -i /home/haden/Downloads/dragon.jpg'
+            before-sleep 'swaylock --indicator-radius 100 -f -i /home/haden/Downloads/dragon.jpg'
 Restart=on-failure
 PrivateTmp=true
 RestartSec=2s

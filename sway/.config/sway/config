@@ -20,6 +20,9 @@ set $menu search
 # Default wallpaper 
 output * bg "~/Downloads/cool.jpg" fill 
 
+# Disable xorg
+xwayland enable
+
 # window decoration
 default_border pixel 3
 for_window [app_id="menu"] border pixel 0; floating enable; resize set 1270 680
@@ -43,7 +46,8 @@ input "1739:30383:CUST0001:00_06CB:76AF_Touchpad" {
        natural_scroll enabled
        click_method clickfinger
        middle_emulation disabled
-   }
+}
+seat seat0 xcursor_theme Adwaita 44
 
 # Keyboard Settings
 input "1:1:AT_Translated_Set_2_keyboard" {
@@ -94,7 +98,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym XF86AudioMicMute exec amixer set Capture toggle 
     
     # Start Firefox
-    bindsym $mod+n exec firefox
+    bindsym $mod+n exec chromium
 
     # Start aerc
     bindsym $mod+c exec termite --exec=aerc
@@ -121,7 +125,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 
     # Exit sway (logs you out of your Wayland session)
     mode "Logout" {
-        bindsym 1 exec 'swaylock -f -i /home/haden/Downloads/enjoying-the-view-1920×1080.jpg'
+        bindsym 1 exec 'swaylock --indicator-radius 100 -f -i ~/Downloads/dragon.jpg'
         bindsym 2 exec swaymsg exit
         bindsym 3 exec systemctl suspend
         bindsym 4 exec systemctl hibernate
