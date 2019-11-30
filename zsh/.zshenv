@@ -6,7 +6,9 @@ fi
 
 # Starts firefox with wayland
 export MOZ_ENABLE_WAYLAND=1
-export MOZ_USE_XINPUT2=1
+
+# Sets correct VAAPI driver
+export LIBVA_DRIVER_NAME=iHD
 
 # Scale hidpi
 export GDK_DPI_SCALE=2
