@@ -62,25 +62,9 @@ window#waybar.hidden {
     color: #ffffff;
 }
 
-#clock {
-    background-color: rgba(24, 24, 24, .9);
-    border-bottom: 6px solid rgba(100, 114, 125, 0.5); }
-
-#battery {
-    background-color: rgba(24, 24, 24, .9);
-    border-bottom: 6px solid rgba(100, 114, 125, 0.5);
-}
-
 #battery.charging {
     color: #ffffff;
     background-color: #26A65B;
-}
-
-@keyframes blink {
-    to {
-        background-color: rgba(24, 24, 24, .9);
-        border-bottom: 6px solid rgba(100, 114, 125, 0.5);
-    }
 }
 
 #battery.critical:not(.charging) {
@@ -108,26 +92,6 @@ label:focus {
 
 #backlight {
     background-color: #90b1b1;
-}
-
-#network {
-    background-color: rgba(24, 24, 24, .9);
-    border-bottom: 6px solid rgba(100, 114, 125, 0.5);
-}
-
-#network.disconnected {
-    background-color: rgba(24, 24, 24, .9);
-    border-bottom: 6px solid rgba(100, 114, 125, 0.5);
-}
-
-#pulseaudio {
-    background-color: rgba(24, 24, 24, .9);
-    border-bottom: 6px solid rgba(100, 114, 125, 0.5);
-}
-
-#pulseaudio.muted {
-    background-color: rgba(24, 24, 24, .9);
-    border-bottom: 6px solid rgba(100, 114, 125, 0.5);
 }
 
 #custom-media {
