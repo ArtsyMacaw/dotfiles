@@ -124,16 +124,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    mode "Logout" {
-        bindsym 1 exec 'swaylock --indicator-radius 100 -f -i ~/Downloads/dragon.jpg'
-        bindsym 2 exec swaymsg exit
-        bindsym 3 exec systemctl suspend
-        bindsym 4 exec systemctl hibernate
-        bindsym 5 exec 'shutdown -h now'
-        bindsym Escape mode "default"
-        bindsym Return mode "default"
-    }
-    bindsym $mod+Shift+e mode "Logout"
+    bindsym $mod+Shift+e exec wlogout /usr/local/etc/wlogout/layout 
 
 #
 # Moving around:
