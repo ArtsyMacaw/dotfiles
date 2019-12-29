@@ -2,13 +2,15 @@
 # Used to select wifi 
 # Requires Network Manager, fzf, font awesome, sed, and bash (Also requires sway however swaymsg commands can be removed; only side effect is window stays on screen till process is finished)
 
-wifi=$(nmcli -t d wifi list | sed s_:__ | sed 's_WPA2__' | sed 's_WPA__' | sed 's_WEP__' | sed -e 's/\(:\).*\(:\)/\1/' | sed '/^\( :\)/d' | sed 's_:__' | sed 's/^ //' | sed -e 's/#.*//' -e 's/[ ^I]*$//' -e '/^$/ d' | fzf --prompt="Network: ")
+wifi=$(nmcli -f SSID,SECURITY,IN-USE -t d wifi list | sed s_:__g | sed 's_*_ *_' | sed 's_WPA1 WPA2__' | sed 's_WPA2__' | sed 's_WPA__' | sed 's_WEP__' | sed '/^/d' | fzf --prompt="Network: ")
 
-if [ "${wifi:0:1}" == "*" ]; then
+wifi=${wifi%?}
+
+if [ "${wifi: -1}" == " " ]; then
 
     swaymsg move container scratchpad
 
-    wifi=$(echo "$wifi" | sed s_*__)
+    wifi=${wifi%?}
 
     if [ "${wifi: -1}" == "" ];  then
 
@@ -44,6 +46,8 @@ if [ "${wifi: -1}" == "" ];  then
     else
 
         swaymsg move container scratchpad
+
+        echo "$wifi"
 
         nmcli c up "$wifi"
 
