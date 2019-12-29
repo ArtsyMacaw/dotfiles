@@ -2,7 +2,7 @@
 PartOf=graphical-session.target
 
 [Service]
-ExecStart=/bin/mako
+ExecStart=/bin/mako --width 500 --height 500
 Restart=on-failure
 PrivateTmp=true
 RestartSec=2s
