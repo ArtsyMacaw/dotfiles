@@ -37,8 +37,7 @@ gaps top 20
 gaps inner 14
 
 # Display Settings
-output eDP1 pos 0,0 res 3840x2160
-output eDP1 scale 2
+output eDP-1 resolution 3840x2160@59.997002Hz
 
 # Touchpad Settings
 input "1739:30383:CUST0001:00_06CB:76AF_Touchpad" {
@@ -124,7 +123,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec wlogout /usr/local/etc/wlogout/layout 
+    bindsym $mod+Shift+e exec wlogout --margin 500
 
 #
 # Moving around:

@@ -1,25 +1,58 @@
-set termguicolors   " enables colors
-syntax enable       " syntax highlighting
-set tabstop=4       " number of visual spaces per TAB
-set softtabstop=4   " number of spaces in tab when editing
-set shiftwidth=4    " number of spaces to use for autoindent
-set expandtab       " tabs are space
-set autoindent
-set copyindent      " copy indent from the previous line
-set number          " show line number
-set showcmd         " show command in bottom bar
-set cursorline      " highlight current line
-set incsearch       " search as characters are entered
-set hlsearch        " highlight match
-set ignorecase      " ignore case when searching
-set smartcase       " ignore case if search pattern is lower case case-sensitive otherwise
-set guicursor=a:ver50   " sets ibeam cursor
-set wildmenu        " command line completion
+" Basic settings 
+set termguicolors
+set background=dark
+syntax enable
+set tabstop=4
+set encoding=utf-8
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set formatoptions+=j
+set autoread
+set smartindent
+set copyindent 
+set number     
+set showcmd     
+set cursorline   
+set incsearch      
+set hlsearch        
+set scrolloff=3
+set sidescrolloff=5
+set ignorecase
+set smartcase     
+set guicursor=a:ver50
+set wildmenu
 set showcmd
+set showmatch
 set backspace=indent,eol,start
 set nostartofline
-set undofile        " Persistent undo
+set undofile
 colorscheme color
+
+" Plugins
+function! PackInit() abort
+    packadd minpac
+    call minpac#init()
+
+    call minpac#add('k-takata/minpac', {'type': 'opt'})
+    call minpac#add('Yggdroot/indentLine')
+    call minpac#add('dense-analysis/ale')
+    call minpac#add('ludovicchabant/vim-gutentags')
+endfunction
+
+" Packages
+packadd termdebug
+packadd matchit
+packadd indentLine
+packadd ale
+packadd vim-gutentags
+
+" Plugin commands
+command! PackUpdate call PackInit() | call minpac#update('', {'do': 'call minpac#status()'})
+command! PackClean  call PackInit() | call minpac#clean()
+command! PackStatus call PackInit() | call minpac#status()
+
+" Auto close mappings
 inoremap {      {}<Left>
 inoremap {<CR>  {<CR>}<Esc>O
 inoremap {{     {
@@ -39,8 +72,6 @@ inoremap <>     <>
 inoremap "      ""<Left>
 inoremap "<CR>  "<CR>"<Esc>O
 inoremap ""     "
-inoremap ""     ""
 inoremap '      ''<Left>
 inoremap '<CR>  '<CR>'<Esc>O
 inoremap ''     '
-inoremap ''     ''
