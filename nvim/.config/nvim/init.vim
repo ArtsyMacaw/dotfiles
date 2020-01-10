@@ -3,6 +3,7 @@ set termguicolors
 set background=dark
 syntax enable
 set tabstop=4
+let g:netrw_dirhistmax = 0
 set encoding=utf-8
 set softtabstop=4
 set shiftwidth=4
