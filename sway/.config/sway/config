@@ -79,7 +79,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+Shift+n exec network
 
     # Take screenshot of selected area
-    bindsym $mod+o exec "slurp | grim -g - $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png') && notify-send 'Screenshot Taken"
+    bindsym $mod+o exec "slurp | grim -g - $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png') && notify-send 'Screenshot Taken'"
 
     # Copy screenshot of selected area
     bindsym $mod+Shift+o exec "slurp | grim -g - - | wl-copy && notify-send 'Screenshot Copied to Clipboard'"

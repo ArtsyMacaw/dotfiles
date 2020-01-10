@@ -38,6 +38,8 @@ function! PackInit() abort
     call minpac#add('Yggdroot/indentLine')
     call minpac#add('dense-analysis/ale')
     call minpac#add('ludovicchabant/vim-gutentags')
+    call minpac#add('itchyny/lightline.vim')
+    call minpac#add('sheerun/vim-polyglot')
 endfunction
 
 " Packages
@@ -46,6 +48,8 @@ packadd matchit
 packadd indentLine
 packadd ale
 packadd vim-gutentags
+packadd lightline.vim
+packadd vim-polyglot
 
 " Plugin commands
 command! PackUpdate call PackInit() | call minpac#update('', {'do': 'call minpac#status()'})
