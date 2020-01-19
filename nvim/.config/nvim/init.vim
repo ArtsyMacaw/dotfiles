@@ -2,6 +2,8 @@
 set termguicolors
 set background=dark
 syntax enable
+set hidden
+set cmdheight=2
 set tabstop=4
 let g:netrw_dirhistmax = 0
 set encoding=utf-8
@@ -41,6 +43,7 @@ function! PackInit() abort
     call minpac#add('ludovicchabant/vim-gutentags')
     call minpac#add('itchyny/lightline.vim')
     call minpac#add('sheerun/vim-polyglot')
+    call minpac#add('neoclide/coc.nvim', {'branch': 'release'})
 endfunction
 
 " Packages
@@ -51,11 +54,27 @@ packadd ale
 packadd vim-gutentags
 packadd lightline.vim
 packadd vim-polyglot
+packadd coc.nvim
 
 " Plugin commands
 command! PackUpdate call PackInit() | call minpac#update('', {'do': 'call minpac#status()'})
 command! PackClean  call PackInit() | call minpac#clean()
 command! PackStatus call PackInit() | call minpac#status()
+
+" Auto complete bindings
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <c-space> coc#refresh()
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Auto close mappings
 inoremap {      {}<Left>

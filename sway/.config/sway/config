@@ -123,7 +123,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec wlogout --margin 500
+    bindsym $mod+Shift+e exec wlogout --margin 500 --protocol layer-shell
 
 #
 # Moving around:
