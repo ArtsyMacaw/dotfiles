@@ -1,0 +1,69 @@
+IMAPAccount gmail
+Host imap.gmail.com
+User collinshaden@gmail.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ./.password-store/email/gmail-auto.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+Subfolders Verbatim
+Path ~/.mail/gmail/
+Inbox ~/.mail/gmail/Inbox
+
+Channel sync-googlemail-default
+Master :gmail-remote:
+Slave :gmail-local:
+Patterns "INBOX"
+
+Channel sync-googlemail-sent
+Master :gmail-remote:"[Gmail]/Sent Mail"
+Slave :gmail-local:Sent
+
+Channel sync-googlemail-all
+Master :gmail-remote:"[Gmail]/All Mail"
+Slave :gmail-local:All
+
+Channel sync-googlemail-spam
+Master :gmail-remote:"[Gmail]/Spam"
+Slave :gmail-local:Spam
+
+Create Slave
+SyncState *
+
+Group gmail
+Channel sync-googlemail-default
+Channel sync-googlemail-sent
+Channel sync-googlemail-all
+Channel sync-googlemail-spam
+
+IMAPAccount icloud
+Host imap.mail.me.com
+User hadencollins@icloud.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ./.password-store/email/icloud-auto.gpg"
+Port 993
+SSLType IMAPS
+SSLVersions TLSv1.2
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+AuthMechs Login
+
+IMAPStore icloud-remote
+Account icloud
+
+MaildirStore icloud-local
+Path ~/.mail/icloud/
+Inbox ~/.mail/icloud/Inbox
+Trash Trash
+
+Channel icloud-folders
+Master :icloud-remote:
+Slave :icloud-local:
+Patterns "INBOX" "Saved" "Drafts" "Archive" "Sent*" "Trash"
+Create Both
+Expunge Both
+SyncState *
+
+Group icloud
+Channel icloud-folders
