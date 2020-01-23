@@ -6,6 +6,7 @@ set hidden
 set cmdheight=2
 set tabstop=4
 let g:netrw_dirhistmax = 0
+let g:indentLine_char = '▏'
 set encoding=utf-8
 set softtabstop=4
 set shiftwidth=4

@@ -92,8 +92,8 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 
     # Volume Controls
     bindsym XF86AudioMute exec pamixer -t
-    bindsym XF86AudioLowerVolume exec pamixer -d 5
-    bindsym XF86AudioRaiseVolume exec pamixer -i 5
+    bindsym XF86AudioLowerVolume exec pamixer -d 5 && pamixer --get-volume > $SWAYSOCK.wob
+    bindsym XF86AudioRaiseVolume exec pamixer -i 5 && pamixer --get-volume > $SWAYSOCK.wob
     bindsym XF86AudioMicMute exec amixer set Capture toggle 
     
     # Start Firefox
@@ -103,8 +103,8 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+c exec termite --exec=aerc
 
     # Brightness controls
-    bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
-    bindsym XF86MonBrightnessUp exec brightnessctl s +10%  
+    bindsym XF86MonBrightnessDown exec light -U 10 && light -G | cut -d'.' -f1 > $SWAYSOCK.wob
+    bindsym XF86MonBrightnessUp exec light -A 10 && light -G | cut -d'.' -f1 > $SWAYSOCK.wob
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -240,3 +240,6 @@ bindsym $mod+r mode "resize"
 
 # Set sway-session.target
 exec "systemctl --user import-environment; systemctl --user start sway-session.target"
+
+# Create pipe for wob
+exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob -M 15 -W 700 -H 80 -a top
