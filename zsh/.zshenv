@@ -23,3 +23,8 @@ export EDITOR=nvim
 # Sets fzf theme
 export FZF_DEFAULT_OPTS='
     --color=fg:#F7F7F7,bg:#23272A,hl:#F7F7F7,fg+:#F7F7F7,bg+:#1A5FB4,hl+:#F7F7F7,bg+:#1A5FB4    --color=info:#23272A,prompt:#F7F7F7,spinner:#2b2929,pointer:#1A5FB4,marker:#2b2929,gutter:#2b2929 --bind='tab:toggle-down,btab:toggle-up' --border --reverse'
+
+# Borg Options
+export BORG_PASSCOMMAND="sudo -u $USER pass services/backup"
+export BORG_RSH="ssh -i $HOME/.ssh/id_rsa.backup"
+export BORG_REPO='ssh://borg@ssh.artsymacaw.com:24848/backup'
