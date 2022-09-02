@@ -6,13 +6,16 @@ setopt extendedglob
 bindkey -e
 zstyle :compinstall filename '/home/haden/.zshrc'
 
+zmodload zsh/zprof
+
 autoload -Uz compinit
 compinit
 
 # Sets alias's
-alias pacu='yay -Syu'
-alias pac-ac='yay -R $(yay -Qdtq)'
-alias pacr='yay -Rns'
-alias paci='yay -S'
+alias pac='paru -Syu'
+alias paci='paru -S tofi'
+alias pac-ac='paru -R $(paru -Qdtq)'
+alias pacr='paru -Rns'
 alias vim='nvim'
 alias grep='rg'
+alias ed='sudoedit'
