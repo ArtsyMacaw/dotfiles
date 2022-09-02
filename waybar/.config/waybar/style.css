@@ -2,8 +2,8 @@
     border: none;
     border-radius: 0;
     font-family: Roboto, sans-serif;
-    font-size: 30px;
-    min-height: 47px;
+    font-size: 15px;
+    min-height: 35px;
 }
 
 window#waybar {
