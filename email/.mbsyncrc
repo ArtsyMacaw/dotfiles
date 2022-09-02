@@ -1,3 +1,6 @@
+Create Slave
+SyncState *
+
 IMAPAccount gmail
 Host imap.gmail.com
 User collinshaden@gmail.com
@@ -29,9 +32,6 @@ Slave :gmail-local:All
 Channel sync-googlemail-spam
 Master :gmail-remote:"[Gmail]/Spam"
 Slave :gmail-local:Spam
-
-Create Slave
-SyncState *
 
 Group gmail
 Channel sync-googlemail-default
