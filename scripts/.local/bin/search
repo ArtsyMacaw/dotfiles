@@ -1,2 +1,0 @@
-#!/bin/bash
-termite --name=menu --exec="sh $HOME/.config/scripts/search" --config=$HOME/.config/termite/menu

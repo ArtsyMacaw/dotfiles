@@ -10,34 +10,33 @@ set $up k
 set $right l
 
 # Your preferred terminal emulator
-set $term termite
+set $term alacritty
 
 # application launcher
 set $menu search
 
 ### Output configuration
 
-# Default wallpaper 
-output * bg "~/Downloads/cool.jpg" fill 
+# Default wallpaper
+output * bg "~/Downloads/cool.jpg" fill
 
 # Disable xorg
-xwayland enable
+xwayland disable
 
 # window decoration
-default_border pixel 3
-for_window [app_id="menu"] border pixel 0; floating enable; resize set 1270 680
-for_window [app_id="drop-down-terminal"] border pixel 0; floating enable; resize set 1920 400; move up 325 px
+default_border pixel 4
+for_window [app_id="menu"] border pixel 0; floating enable; resize set 635 330
 
 # Border Color
 client.focused #1A5FB4 #1A5FB4 #1A5FB4 #1A5FB4 #1A5FB4
 smart_borders on
 
 # Sets Gaps between windows
-gaps top 20
 gaps inner 14
 
 # Display Settings
 output eDP-1 resolution 3840x2160@59.997002Hz
+output eDP-1 scale 2
 
 # Touchpad Settings
 input "1739:30383:CUST0001:00_06CB:76AF_Touchpad" {
@@ -45,8 +44,9 @@ input "1739:30383:CUST0001:00_06CB:76AF_Touchpad" {
        natural_scroll enabled
        click_method clickfinger
        middle_emulation disabled
+       accel_profile adaptive
+       pointer_accel .05
 }
-seat seat0 xcursor_theme Adwaita 44
 
 # Keyboard Settings
 input "1:1:AT_Translated_Set_2_keyboard" {
@@ -59,13 +59,10 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Return exec $term
-
-    # Start drop down terminal
-    bindsym $mod+grave exec termite --name="drop-down-terminal" --config ~/.config/termite/drop-down
+   bindsym $mod+Return exec $term
 
     # Start file manager
-    bindsym $mod+Tab exec nautilus
+    bindsym $mod+Tab exec thunar
 
     # Notifications
     bindsym Control+Space exec makoctl dismiss
@@ -94,13 +91,13 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym XF86AudioMute exec pamixer -t
     bindsym XF86AudioLowerVolume exec pamixer -d 5 && pamixer --get-volume > $SWAYSOCK.wob
     bindsym XF86AudioRaiseVolume exec pamixer -i 5 && pamixer --get-volume > $SWAYSOCK.wob
-    bindsym XF86AudioMicMute exec amixer set Capture toggle 
-    
+    bindsym XF86AudioMicMute exec amixer set Capture toggle
+
     # Start Firefox
-    bindsym $mod+n exec chromium
+    bindsym $mod+n exec firefox
 
     # Start aerc
-    bindsym $mod+c exec termite --exec=aerc
+    bindsym $mod+c exec alacritty -e aerc
 
     # Brightness controls
     bindsym XF86MonBrightnessDown exec light -U 10 && light -G | cut -d'.' -f1 > $SWAYSOCK.wob
@@ -110,7 +107,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+d exec tofi-drun --prompt-text "Launch: "
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -123,7 +120,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec wlogout --margin 500 --protocol layer-shell
+    bindsym $mod+Shift+e exec wlogout --margin 250 --protocol layer-shell
 
 #
 # Moving around:
@@ -182,12 +179,12 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    bindsym $mod+v split none
+    bindsym $mod+b splitt
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
+    bindsym $mod+w layout default
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
@@ -239,7 +236,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Set sway-session.target
-exec "systemctl --user import-environment; systemctl --user start sway-session.target"
+exec /home/haden/.config/scripts/session --with-cleanup
 
 # Create pipe for wob
-exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob -M 15 -W 700 -H 80 -a top
+exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob -M 40 -W 350 -H 40 -a top

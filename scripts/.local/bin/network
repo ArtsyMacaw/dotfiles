@@ -1,2 +1,71 @@
 #!/bin/bash
-termite --name=menu --exec="bash $HOME/.config/scripts/network" --config=$HOME/.config/termite/menu
+# Used to select wifi
+# Requires Network Manager, tofi, font awesome, sed, and bash
+
+wifi=$(nmcli -f SSID,SECURITY,IN-USE -t d wifi list | sed s_:__g | sed 's_*_ *_' | sed 's_WPA1 WPA2__' | sed 's_WPA2__' | sed 's_WPA__' | sed 's_WEP__' | sed '/^/d' | tofi --prompt-text "Network: ")
+
+wifi=${wifi%?}
+
+if [ -z "$wifi" ]; then
+
+	exit 0
+
+fi
+
+if [ "${wifi: -1}" == " " ]; then
+
+    wifi=${wifi%?}
+
+    if [ "${wifi: -1}" == "" ];  then
+
+        wifi=${wifi%?}
+
+    fi
+
+    nmcli connection down "$wifi"
+
+    notify-send "Disconnected from $wifi"
+
+    exit 0
+fi
+
+if [ "${wifi: -1}" == "" ];  then
+
+    wifi=${wifi%?}
+
+    con=$(nmcli c show | grep "$wifi")
+
+    if [ -z "$con" ]; then
+
+        read -s -p "Enter Password: " pass
+
+        nmcli d wifi connect "$wifi" password "$pass"
+
+        notify-send "Connected to $wifi"
+
+        exit 0
+
+    else
+
+        echo "$wifi"
+
+        nmcli c up "$wifi"
+
+        notify-send "Connected to $wifi"
+
+        exit 0
+
+    fi
+else
+
+    nmcli d wifi connect "$wifi"
+
+    notify-send "Connected to $wifi"
+
+    exit 0
+
+fi
+
+notify-send "Failed to connect to $wifi"
+
+exit 1
