@@ -2,7 +2,7 @@
 export MOZ_ENABLE_WAYLAND=1
 
 # Allows system tray support
-export XDG_CURRENT_DESKTOP=Unity
+export XDG_CURRENT_DESKTOP=sway
 
 # Sets correct VAAPI driver
 export LIBVA_DRIVER_NAME=iHD
@@ -11,7 +11,7 @@ export LIBVA_DRIVER_NAME=iHD
 export PATH="$HOME/.local/bin:$PATH"
 
 # Sets gnome-keyring daemon as ssh-agent
-export SSH_AUTH_SOCK=/run/user/$(id -u)/keyring/ssh
+export SSH_AUTH_SOCK=$(echo $XDG_RUNTIME_DIR)/keyring/ssh
 
 # Sets default editor
 export VISUAL=nvim
