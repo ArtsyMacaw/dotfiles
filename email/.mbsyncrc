@@ -1,6 +1,3 @@
-Create Slave
-SyncState *
-
 IMAPAccount gmail
 Host imap.gmail.com
 User collinshaden@gmail.com
@@ -17,21 +14,33 @@ Path ~/.mail/gmail/
 Inbox ~/.mail/gmail/Inbox
 
 Channel sync-googlemail-default
-Master :gmail-remote:
-Slave :gmail-local:
+Far :gmail-remote:
+Near :gmail-local:
 Patterns "INBOX"
+Create Both
+Expunge Both
+SyncState *
 
 Channel sync-googlemail-sent
-Master :gmail-remote:"[Gmail]/Sent Mail"
-Slave :gmail-local:Sent
+Far :gmail-remote:"[Gmail]/Sent Mail"
+Near :gmail-local:Sent
+Create Both
+Expunge Both
+SyncState *
 
 Channel sync-googlemail-all
-Master :gmail-remote:"[Gmail]/All Mail"
-Slave :gmail-local:All
+Far :gmail-remote:"[Gmail]/All Mail"
+Near :gmail-local:All
+Create Both
+Expunge Both
+SyncState *
 
 Channel sync-googlemail-spam
-Master :gmail-remote:"[Gmail]/Spam"
-Slave :gmail-local:Spam
+Far :gmail-remote:"[Gmail]/Spam"
+Near :gmail-local:Spam
+Create Both
+Expunge Both
+SyncState *
 
 Group gmail
 Channel sync-googlemail-default
@@ -58,8 +67,8 @@ Inbox ~/.mail/icloud/Inbox
 Trash Trash
 
 Channel icloud-folders
-Master :icloud-remote:
-Slave :icloud-local:
+Far :icloud-remote:
+Near :icloud-local:
 Patterns "INBOX" "Saved" "Drafts" "Archive" "Sent*" "Trash"
 Create Both
 Expunge Both
