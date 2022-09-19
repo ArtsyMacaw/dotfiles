@@ -17,14 +17,12 @@ set $menu search
 
 ### Output configuration
 
-# Default wallpaper
-output * bg "~/Downloads/cool.jpg" fill
-
 # Disable xorg
 xwayland disable
 
-# window decoration
+# Window decoration
 default_border pixel 4
+for_window [app_id="polkit-gnome-authentication-agent-1"] border pixel 0; floating enable
 for_window [app_id="menu"] border pixel 0; floating enable; resize set 635 330
 
 # Border Color
@@ -35,8 +33,7 @@ smart_borders on
 gaps inner 14
 
 # Display Settings
-output eDP-1 resolution 3840x2160@59.997002Hz
-output eDP-1 scale 2
+output eDP-1 resolution 3840x2160@59.997002Hz scale 2 bg ~/Downloads/cool.jpg fill
 
 # Touchpad Settings
 input "1739:30383:CUST0001:00_06CB:76AF_Touchpad" {
@@ -89,25 +86,28 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 
     # Volume Controls
     bindsym XF86AudioMute exec pamixer -t
-    bindsym XF86AudioLowerVolume exec pamixer -d 5 && pamixer --get-volume > $SWAYSOCK.wob
-    bindsym XF86AudioRaiseVolume exec pamixer -i 5 && pamixer --get-volume > $SWAYSOCK.wob
+    bindsym XF86AudioLowerVolume exec pamixer -d 5 && pamixer --get-volume > $XDG_RUNTIME_DIR/wob.sock
+    bindsym XF86AudioRaiseVolume exec pamixer -i 5 && pamixer --get-volume > $XDG_RUNTIME_DIR/wob.sock
     bindsym XF86AudioMicMute exec amixer set Capture toggle
 
     # Start Firefox
-    bindsym $mod+n exec firefox
+    bindsym $mod+n exec "bwrap --dev-bind / / --ro-bind /dev/null /etc/ld.so.preload firefox"
 
     # Start aerc
-    bindsym $mod+c exec alacritty -e aerc
+    bindsym $mod+c exec "alacritty -e aerc"
 
     # Brightness controls
-    bindsym XF86MonBrightnessDown exec light -U 10 && light -G | cut -d'.' -f1 > $SWAYSOCK.wob
-    bindsym XF86MonBrightnessUp exec light -A 10 && light -G | cut -d'.' -f1 > $SWAYSOCK.wob
+    bindsym XF86MonBrightnessDown exec light -U 10 && light -G | cut -d'.' -f1 > $XDG_RUNTIME_DIR/wob.sock
+    bindsym XF86MonBrightnessUp exec light -A 10 && light -G | cut -d'.' -f1 > $XDG_RUNTIME_DIR/wob.sock
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec wlogout --margin 250 --protocol layer-shell
+
+    # Start your launcher
+    bindsym $mod+d exec launch
 
     # Kill focused window
     bindsym $mod+Shift+q kill
-
-    # Start your launcher
-    bindsym $mod+d exec tofi-drun --prompt-text "Launch: "
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -118,9 +118,6 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 
     # Reload the configuration file
     bindsym $mod+Shift+c reload
-
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec wlogout --margin 250 --protocol layer-shell
 
 #
 # Moving around:
@@ -236,7 +233,4 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Set sway-session.target
-exec /home/haden/.config/scripts/session --with-cleanup
-
-# Create pipe for wob
-exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob -M 40 -W 350 -H 40 -a top
+exec /home/haden/.local/bin/session --with-cleanup
