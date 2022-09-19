@@ -2,35 +2,35 @@
     "label" : "shutdown",
     "action" : "systemctl poweroff",
     "text" : "Shutdown",
-    "keybind" : "1"
+    "keybind" : "1",
 }
 {
-    "label" : "lock",
-    "action" : "swaylock --indicator-radius 100 -f -i /home/haden/Downloads/dragon.jpg",
-    "text" : "Lock",
+    "label" : "logout",
+    "action" : "swaymsg exit",
+    "text" : "Logout",
     "keybind" : "4",
 }
 {
     "label" : "reboot",
     "action" : "systemctl reboot",
     "text" : "Reboot",
-    "keybind" : "2"
+    "keybind" : "2",
 }
 {
-    "label" : "logout",
-    "action" : "swaymsg exit",
-    "text" : "Logout",
-    "keybind" : "5"
+    "label" : "lock",
+    "action" : "swaylock --indicator-radius 100 -f -i /home/haden/Downloads/dragon.jpg",
+    "text" : "Lock",
+    "keybind" : "5",
 }
 {
     "label" : "hibernate",
     "action" : "systemctl hibernate",
     "text" : "Hibernate",
-    "keybind" : "3"
+    "keybind" : "3",
 }
 {
     "label" : "suspend",
     "action" : "systemctl suspend",
     "text" : "Suspend",
-    "keybind" : "6"
+    "keybind" : "6",
 }
