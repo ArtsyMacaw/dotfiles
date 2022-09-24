@@ -1,0 +1,12 @@
+[Unit]
+Description=Foot terminal server mode
+Documentation=man:foot(1)
+Requires=%N.socket
+
+[Service]
+ExecStart=/usr/bin/foot --server=0
+NonBlocking=true
+StandardInput=socket
+
+[Install]
+WantedBy=sway-session.target

@@ -10,7 +10,7 @@ set $up k
 set $right l
 
 # Your preferred terminal emulator
-set $term alacritty
+set $term footclient -s $XDG_RUNTIME_DIR/foot-server.sock
 
 # application launcher
 set $menu search
@@ -18,10 +18,10 @@ set $menu search
 ### Output configuration
 
 # Disable xorg
-xwayland disable
+xwayland enable
 
 # Window decoration
-default_border pixel 4
+default_border pixel 3
 for_window [app_id="polkit-gnome-authentication-agent-1"] border pixel 0; floating enable
 for_window [app_id="menu"] border pixel 0; floating enable; resize set 635 330
 
@@ -33,7 +33,7 @@ smart_borders on
 gaps inner 14
 
 # Display Settings
-output eDP-1 resolution 3840x2160@59.997002Hz scale 2 bg ~/Downloads/cool.jpg fill
+output eDP-1 resolution 3840x2160@59.997002Hz max_render_time 8 scale 2 bg ~/Downloads/cool.jpg fit
 
 # Touchpad Settings
 input "1739:30383:CUST0001:00_06CB:76AF_Touchpad" {

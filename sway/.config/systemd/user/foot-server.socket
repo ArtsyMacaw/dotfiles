@@ -1,0 +1,5 @@
+[Socket]
+ListenStream=%t/foot-server.sock
+
+[Install]
+WantedBy=sway-session.target
