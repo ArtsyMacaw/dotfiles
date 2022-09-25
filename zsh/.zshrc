@@ -1,3 +1,4 @@
+#Power10k Controlled
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -14,7 +15,7 @@ bindkey -e
 # Sets alias's
 alias pac='paru'
 alias paci='paru -S'
-alias pac-ac='paru -R $(paru -Qdtq)'
+alias pacc='paru -R $(paru -Qdtq)'
 alias pacr='paru -Rns'
 alias vim='nvim'
 alias grep='rg'
@@ -47,4 +48,5 @@ bindkey "^[[1;5D" backward-word
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
+# Power10k controlled
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
