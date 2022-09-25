@@ -12,7 +12,6 @@ set encoding=utf-8
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-set clipboard=unnamedplus
 set formatoptions+=j
 set autoread
 set smartindent
