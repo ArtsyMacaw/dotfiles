@@ -1,0 +1,6 @@
+#!/bin/bash
+# Menu to select and launch desktop entries
+
+search=$(tofi-drun --prompt-text "Launch: ")
+
+swaymsg exec "$search"
