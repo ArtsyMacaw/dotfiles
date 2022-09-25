@@ -29,6 +29,7 @@ bar:
 
   left:
     - i3:
+        sort: ascending
         anchors: # Not used (directly) by f00bar; used here to avoid duplication
           - string: &i3_common {margin: 5, on-click: "swaymsg --quiet workspace {name}"}
           - string: &default {<<: *i3_common, text: "   {name}   "}
@@ -70,7 +71,7 @@ bar:
           - string: {text: "{time}"}
   right:
     - network:
-        name: wlp2s0
+        name: wlan0
         content:
           map:
             default: {string: {text: , font: *awesome, foreground: ffffff66}}
@@ -97,7 +98,12 @@ bar:
               ~online: {string: {text: , font: *awesome, foreground: ff0000ff}}
               online:
                 map:
-                  on-click: /bin/sh -c "amixer -q sset Speaker unmute && amixer -q sset Headphone unmute && amixer -q sset Master toggle"
+                  on-click:
+                    left: /bin/sh -c "pamixer -t"
+                    right: /bin/sh -c "pamixer -t"
+                    middle: /bin/sh -c "pamixer -t"
+                    wheel-up: /bin/sh -c "pamixer -i 3"
+                    wheel-down: /bin/sh -c "pamixer -d 3"
                   conditions:
                     muted: {string: {text: , font: *awesome, foreground: ffffff66}}
                     ~muted:
