@@ -17,32 +17,34 @@ set $menu search
 
 ### Output configuration
 
+# Display
+output eDP-1 resolution 2256x1504@59.999Hz bg ~/Downloads/wallpaper.png fill scale 1.5 max_render_time 3
+
 # Disable xorg
 xwayland enable
 
 # Window decoration
-default_border pixel 3
+default_border pixel 2
 for_window [app_id="polkit-gnome-authentication-agent-1"] border pixel 0; floating enable
-for_window [app_id="menu"] border pixel 0; floating enable; resize set 635 330
+for_window [app_id="com.github.artsymacaw.kaprica"] border pixel 0; floating enable
+for_window [app_id="menu"] border pixel 0; floating enable; resize set 600 300
 
 # Border Color
 client.focused #1A5FB4 #1A5FB4 #1A5FB4 #1A5FB4 #1A5FB4
 smart_borders on
+smart_gaps on
 
 # Sets Gaps between windows
-gaps inner 14
-
-# Display Settings
-output eDP-1 resolution 3840x2160@59.997002Hz max_render_time 8 scale 2 bg ~/Downloads/cool.jpg fit
+gaps inner 4
+gaps outer 4
 
 # Touchpad Settings
-input "1739:30383:CUST0001:00_06CB:76AF_Touchpad" {
+input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
        tap disabled
        natural_scroll enabled
        click_method clickfinger
        middle_emulation disabled
        accel_profile adaptive
-       pointer_accel .05
 }
 
 # Keyboard Settings
@@ -56,14 +58,16 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 # Basics:
 #
     # Start a terminal
-   bindsym $mod+Return exec $term
+    bindsym $mod+Return exec $term
 
     # Start file manager
     bindsym $mod+Tab exec thunar
 
+    # Start Obsidian
+    bindsym $mod+m exec obsidian
+
     # Notifications
-    bindsym Control+Space exec makoctl dismiss
-    bindsym Control+Shift+Space exec makoctl dismiss --all
+    bindsym Control+Space exec swaync-client -t -sw
 
     # Password Manager
     bindsym $mod+x exec password
@@ -91,17 +95,17 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym XF86AudioMicMute exec amixer set Capture toggle
 
     # Start Firefox
-    bindsym $mod+n exec "bwrap --dev-bind / / --ro-bind /dev/null /etc/ld.so.preload firefox"
+    bindsym $mod+n exec "firefox"
 
     # Start aerc
-    bindsym $mod+c exec "alacritty -e aerc"
+    bindsym $mod+c exec betterbird
 
     # Brightness controls
-    bindsym XF86MonBrightnessDown exec light -U 10 && light -G | cut -d'.' -f1 > $XDG_RUNTIME_DIR/wob.sock
-    bindsym XF86MonBrightnessUp exec light -A 10 && light -G | cut -d'.' -f1 > $XDG_RUNTIME_DIR/wob.sock
+    bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+    bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec wlogout --margin 250 --protocol layer-shell
+    bindsym $mod+Shift+e exec wlogout --margin 290 --protocol layer-shell
 
     # Start your launcher
     bindsym $mod+d exec launch
@@ -146,6 +150,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 #
 # Workspaces:
 #
+    set $ws1 
     # Switch to workspace
     bindsym $mod+1 workspace 1
     bindsym $mod+2 workspace 2
@@ -177,7 +182,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
     bindsym $mod+v split none
-    bindsym $mod+b splitt
+    bindsym $mod+b split
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking

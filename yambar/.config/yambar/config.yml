@@ -5,14 +5,14 @@
 # the sway-xkb module with the xkb module.
 
 # fonts we'll be re-using here and there
-awesome: &awesome Font Awesome 5 Free:style=solid:pixelsize=35
-awesome_brands: &awesome_brands Font Awesome 5 Brands:pixelsize=35
+awesome: &awesome Font Awesome 10 Free:style=solid:pixelsize=50
+awesome_brands: &awesome_brands Font Awesome 10 Brands:pixelsize=50
 
-std_underline: &std_underline {underline: { size: 10, color: ff0000ff}}
+std_underline: &std_underline {underline: { size: 3, color: ff0000ff}}
 
 # This is THE bar configuration
 bar:
-  height: 65
+  height: 60
   location: top
   spacing: 15
   margin: 25
@@ -21,11 +21,11 @@ bar:
   font: Adobe Helvetica:pixelsize=35
 
   foreground: ffffffff
-  background: 111111cc
+  background: 11111180
 
   border:
     color: 999999cc
-    bottom-width: 10
+    bottom-width: 5
 
   left:
     - i3:
@@ -89,33 +89,28 @@ bar:
                     ipv6 == "":
                       - string: {text: , font: *awesome, foreground: ffffff66}
                       - string: {text: "{name}", foreground: ffffff66}
-    - alsa:
-        card: hw:PCH
-        mixer: Master
+    - pipewire:
         content:
           map:
             conditions:
-              ~online: {string: {text: , font: *awesome, foreground: ff0000ff}}
-              online:
+              type == "sink":
                 map:
-                  on-click:
-                    left: /bin/sh -c "pamixer -t"
-                    right: /bin/sh -c "pamixer -t"
-                    middle: /bin/sh -c "pamixer -t"
-                    wheel-up: /bin/sh -c "pamixer -i 3"
-                    wheel-down: /bin/sh -c "pamixer -d 3"
                   conditions:
-                    muted: {string: {text: , font: *awesome, foreground: ffffff66}}
-                    ~muted:
-                      ramp:
-                        tag: percent
+                    muted:
+                      list:
+                        spacing: 0
                         items:
-                          - string: {text: " {percent}%", font: *awesome}
-                          - string: {text: " {percent}%", font: *awesome}
-                          - string: {text: " {percent}%", font: *awesome}
+                          - string: {text: "  {cubic_volume}%", foreground: ff0000ff}
+                    ~muted:
+                        ramp:
+                          tag: linear_volume
+                          items:
+                            - string: {text: "  {cubic_volume}%"}
+                            - string: {text: "  {cubic_volume}%"}
+                            - string: {text: "  {cubic_volume}%"}
     - battery:
-        name: BAT0
-        poll-interval: 30
+        name: BAT1
+        poll-interval: 30000
         anchors:
           discharging: &discharging
             list:
@@ -147,7 +142,7 @@ bar:
               state == full:
                 - string: {text: , foreground: 00ff00ff, font: *awesome}
                 - string: {text: "{capacity}%"}
-              state == not charging:
+              state == "not charging":
                 - ramp:
                     tag: capacity
                     items:

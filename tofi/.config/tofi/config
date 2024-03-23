@@ -1,5 +1,11 @@
 font=/usr/share/fonts/TTF/RobotoMono-Regular.ttf
 hint-font=false
+ascii-input=true
+auto-accept-single=true
 border-color=#1A5FB4
-font-size=26
+font-size=20
 scale=false
+height=30%
+width=40%
+outline-width=0
+border-width=6

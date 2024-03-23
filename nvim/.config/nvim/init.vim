@@ -43,6 +43,7 @@ function! PackInit() abort
     call minpac#add('k-takata/minpac', {'type': 'opt'})
     call minpac#add('dense-analysis/ale')
     call minpac#add('itchyny/lightline.vim')
+    call minpac#add('github/copilot.vim')
     call minpac#add('sheerun/vim-polyglot')
     call minpac#add('lervag/vimtex')
     call minpac#add('neoclide/coc.nvim', {'branch': 'release'})
@@ -76,19 +77,13 @@ lua vim.o.background = 'dark'
 lua require('vscode').setup({transparent = true, italic_comments = true})
 
 " Auto complete bindings
-function! CheckBackspace() abort
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-set updatetime=300
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <silent><expr> <S-TAB>
-      \ coc#pum#visible() ? coc#pum#prev(1) :
-      \ CheckBackspace() ? "\<S-Tab>" :
-      \ coc#refresh()
 inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
