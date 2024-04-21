@@ -1,0 +1,13 @@
+[Unit]
+Description=Lightweight and configurable status panel
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=swaync
+Restart=on-failure
+PrivateTmp=true
+RestartSec=2s
+
+[Install]
+WantedBy=sway-session.target

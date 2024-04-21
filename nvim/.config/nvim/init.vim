@@ -1,6 +1,7 @@
 " Basic settings
 set termguicolors
 set background=dark
+set clipboard+=unnamedplus
 syntax enable
 set hidden
 set cmdheight=2

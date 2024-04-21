@@ -5,15 +5,15 @@ fi
 
 # History settings
 HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 setopt autocd
 setopt extendedglob
 setopt HIST_IGNORE_SPACE
 bindkey -e
 
 # Sets alias's
-alias pac='paru'
+alias pac='paru -Syu'
 alias paci='paru -S'
 alias pacc='paru -R $(paru -Qdtq)'
 alias pacr='paru -Rns'

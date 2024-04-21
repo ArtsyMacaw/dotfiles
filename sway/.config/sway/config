@@ -25,8 +25,9 @@ xwayland enable
 
 # Window decoration
 default_border pixel 2
-for_window [app_id="polkit-gnome-authentication-agent-1"] border pixel 0; floating enable
-for_window [app_id="com.github.artsymacaw.kaprica"] border pixel 0; floating enable
+
+for_window [app_id="org.kde.polkit-kde-authentication-agent-1"] border pixel 0; floating enable
+for_window [app_id="com.github.artsymacaw.kaprica"] border pixel 0; floating enable; move position 1154 532
 for_window [app_id="menu"] border pixel 0; floating enable; resize set 600 300
 
 # Border Color
@@ -67,7 +68,9 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+m exec obsidian
 
     # Notifications
-    bindsym Control+Space exec swaync-client -t -sw
+    bindsym Control+Shift+Space exec swaync-client -t -sw
+    bindsym Control+Alt+Space exec swaync-client -C
+    bindsym Control+Space exec swaync-client --close-latest
 
     # Password Manager
     bindsym $mod+x exec password
@@ -97,8 +100,9 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     # Start Firefox
     bindsym $mod+n exec "firefox"
 
-    # Start aerc
-    bindsym $mod+c exec betterbird
+    # Start clipboard manager
+    bindsym $mod+c exec /home/haden/Projects/kaprica/build/src/kapg
+    #bindsym $mod+c exec '/home/haden/Projects/kaprica/build/kapc search -Ls | tofi --prompt-text Copy: | /home/haden/Projects/kaprica/build/kapc copy -r'
 
     # Brightness controls
     bindsym XF86MonBrightnessDown exec xbacklight -dec 10

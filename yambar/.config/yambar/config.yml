@@ -8,7 +8,7 @@
 awesome: &awesome Font Awesome 10 Free:style=solid:pixelsize=50
 awesome_brands: &awesome_brands Font Awesome 10 Brands:pixelsize=50
 
-std_underline: &std_underline {underline: { size: 3, color: ff0000ff}}
+std_underline: &std_underline {underline: { size: 2, color: ff0000ff}}
 
 # This is THE bar configuration
 bar:
@@ -71,10 +71,8 @@ bar:
           - string: {text: "{time}"}
   right:
     - network:
-        name: wlan0
         content:
           map:
-            default: {string: {text: , font: *awesome, foreground: ffffff66}}
             conditions:
               state == down: {string: {text: , font: *awesome, foreground: ff0000ff}}
               state == up:
